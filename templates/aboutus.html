@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+
+<head>
+<title>Hema Care</title>
+<meta charset="utf-8">
+<meta name="description" content="Blood bank management system">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel='stylesheet' href="{% static 'styles/style.css'%}" type="text/css" media='all'>
+<link rel='stylesheet' href="{% static 'styles/layout.css'%}" type="text/css" media='all'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+<style>
+.tee{
+    margin: 5em;
+}
+
+</style>
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row0">
+  <div id="topbar" class="hoc clear">
+    <div class="fl_left"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+      
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+    <div class="fl_right"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+ 
+         
+
+      
+         {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" title="Logout"><span style="color:red;">Log out <i class="far fa-life-ring"></i></a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}" title="Login"><span style="color:red;">Log in <i class="fas fa-sign-in-alt"></i></a></li>
+        <li><a href="{% url 'signup' %}" title="Sign Up"><span style="color:red;">Sign Up <i class="fas fa-edit"></i></a></li>
+        {% endif %}
+       
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row1">
+  <header id="header" class="hoc clear">
+    <div id="logo" class="fl_left"> 
+      <!-- ################################################################################################ -->
+    <h1><a href=" {% url 'home'%}" ><img src="{% static 'images/brand.png' %}"></a></h1>
+      <!-- ################################################################################################ -->
+    </div>
+
+    <nav id="mainav" class="fl_right"> 
+      <!-- ################################################################################################ -->
+      <ul class="clear">
+      {% if user.is_authenticated %}
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'seek' %}">SEEK BLOOD</a></li>
+			    <li class="active"><a href="{% url 'donor' %}">DONATE</a></li>
+			    <li class="active"><a href="{% url 'eligibility' %}">ELIGIBILITY CRITERIA</a></li>
+				<li class="active"><a href=" {% url 'contact'%}">CONTACT US</a></li>
+				<li class="active"><a href=" {% url 'about_us'%}"> ABOUT US</a></li>
+       {% else %}
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'login' %}">SEEK BLOOD</a></li>
+			    <li class="active"><a href="{% url 'login' %}">DONATE</a></li>
+			    <li class="active"><a href="{% url 'eligibility' %}">ELIGIBILITY CRITERIA</a></li>
+				<li class="active"><a href=" {% url 'contact'%}">CONTACT US</a></li>
+				<li class="active"><a href=" {% url 'about_us'%}"> ABOUT US</a></li>
+        {% endif %}
+      </ul>
+      <!-- ################################################################################################ -->
+    </nav>
+  </header>
+</div>
+    <div class="about">
+    <h1 ><center>About Us</center></h1>
+    <hr>
+   <div class='tee'>
+    <p class="paragraph">Who we are....</p>
+<p class="paragraph">Savannah Health Systems Innovation  Limited is a creative systems product development company focused on delivering creative and bespoke services to its client.</p> 
+<p class="paragraph"> Our success is founded on our responsive and collaborative approach to providing solutions; extensive experience; and commitment to integrating the customer into all stages of the product development life-cycle.</p>
+    </div>
+     </div>
+    
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="heading">Reach Out to us</h6>
+      <ul class="nospace linklist contact btmspace-30">
+        <li><i class="fas fa-map-marker-alt"></i>
+          <address>
+            2,Babatope Ajakaye Cresent, Jahi , Abuja
+          </address>
+        </li>
+        <li><i class="fas fa-phone"></i> +234806766766666</li>
+        <li><i class="far fa-envelope"></i> info@savannahinnovations.com</li>
+      </ul>
+      <ul class="faico clear">
+        <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+        <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+        <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+        <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+       
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Latest News</h6>
+      <ul class="nospace linklist">
+        <li>
+          <article>
+            <p class="nospace btmspace-10"><a href="#"><span style="color:red;">NBTS blood donation at Kubwa.</a></p>
+            <time class="block font-xs" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2045</time>
+          </article>
+        </li>
+        <li>
+          <article>
+            <p class="nospace btmspace-10"><a href="#"><span style="color:red;">Advantages of blood donation</a></p>
+            <time class="block font-xs" datetime="2045-04-05">Thursday, 5<sup>th</sup> April 2045</time>
+          </article>
+        </li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Our Partners</h6>
+      <ul class="nospace linklist">
+        <li><a href="#"><span style="color:red;">National Blood Transfusion Service</a></li>
+        <li><a href="#"><span style="color:red;">GU-CGHPI</a></li>
+        
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Gallery</h6>
+      <ul class="nospace clear latestimg">
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}"alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img  src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+      </ul>
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <p class="fl_left">&copy; 2021 | <a href="https://savannahinnovations.com/">Savannah Health Systems Innovation Limited</a></p>
+    <p class="fl_right"> Designed by <a href="https://oluwatosin-dev.netlify.app/">Oluwatosin </a> </p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{% static 'scripts/jquery.min.js' %}"></script>
+<script src="{% static 'scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'scripts/jquery.mobilemenu.js' %}"></script>
+
+
+
+</body>
+</html>

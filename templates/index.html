@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+{% load static %}
+<title>Hema Care</title>
+<meta charset="utf-8">
+<meta name="description" content="Blood bank management system">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+<link rel='stylesheet' href="{% static 'styles/layout.css'%}" type="text/css" media='all'>
+<link rel='stylesheet' href="{% static 'styles/framework.css'%}" type="text/css" media='all'>
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row0">
+  <div id="topbar" class="hoc clear">
+    <div class="fl_left"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+      
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+    <div class="fl_right"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+ 
+         {% if user.is_authenticated %}
+     
+        <li> <h3><div  id='greet'></h3> <div></li>
+         
+          {% endif %}
+
+        
+         {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" title="Logout">Log out <i class="far fa-life-ring"></i></a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}" title="Login">Log in <i class="fas fa-sign-in-alt"></i></a></li>
+        <li><a href="{% url 'signup' %}" title="Sign Up">Sign Up <i class="fas fa-edit"></i></a></li>
+        {% endif %}
+       
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row1">
+  <header id="header" class="hoc clear">
+    <div id="logo" class="fl_left"> 
+      <!-- ################################################################################################ -->
+   
+      <!-- ################################################################################################ -->
+       <h1><a href=" {% url 'home'%}" ><img src="{% static 'images/brand.png' %}"></a></h1>
+    </div>
+
+    <nav id="mainav" class="fl_right"> 
+      <!-- ################################################################################################ -->
+      <ul class="clear">
+      {% if user.is_authenticated %}
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'seek' %}">SEEK BLOOD</a></li>
+			    <li class="active"><a href="{% url 'donor' %}">DONATE</a></li>
+			    <li class="active"><a href="{% url 'eligibility' %}">ELIGIBILITY CRITERIA</a></li>
+				<li class="active"><a href=" {% url 'contact'%}">CONTACT US</a></li>
+				<li class="active"><a href=" {% url 'about_us'%}"> ABOUT US</a></li>
+       {% else %}
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'login' %}">SEEK BLOOD</a></li>
+			    <li class="active"><a href="{% url 'login' %}">DONATE</a></li>
+			    <li class="active"><a href="{% url 'eligibility' %}">ELIGIBILITY CRITERIA</a></li>
+				<li class="active"><a href=" {% url 'contact'%}">CONTACT US</a></li>
+				<li class="active"><a href=" {% url 'about_us'%}"> ABOUT US</a></li>
+        {% endif %}
+      </ul>
+      <!-- ################################################################################################ -->
+    </nav>
+  </header>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper bgded overlay" style="background-image:url('static/images/mg.jpg');">
+  <div id="pageintro" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <article>
+      <h3 class="heading">Life is in blood <br> donate Blood – give life.</h3>
+      <p>The blood banking system in Nigeria is still poorly developed as a number of centers depend on paid donors whose hematological and 
+      infectious status might not be fully known often times prior to blood donations.</p><p>
+				  We are trying to make available adequate blood to the needy patients all over Nigeria.</p>
+      <footer>
+        <ul class="nospace inline pushright">
+          {% if user.is_authenticated %}
+          <li><a class="btn" href="{% url 'donor' %}">I want to donate</a></li>
+           {% else %}
+          <li><a class="btn" href="{% url 'login' %}">I want to donate</a></li>
+           {% endif %}
+        </ul>
+      </footer>
+    </article>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper bgded overlay" style="background-image:url('static/images/ceo.png');">
+  <section class="hoc container clear"> 
+    <!-- ################################################################################################ -->
+    <div class="center btmspace-80">
+      <h6 class="heading underline font-x2">Welcome to Hema Care</h6>
+    </div>
+    <ul id="testimonials" class="nospace group btmspace-80">
+      <li class="one_half first">
+        <blockquote>Feugiat ligula augue tempor orci ullamcorper mattis erat pede at magna praesent non justo praesent vitae magna at metus pulvinar aliquam nulla dictum vestibulum lorem nam at elit vel erat eleifend.</blockquote>
+        <figure class="clear"><img class="circle" src="{% static 'images/messi.jpg' %}" alt="">
+          <figcaption>
+            <h6 class="heading"><span style="color:black;">Lionel Messi</h6>
+            <em><span style="color:black;">CEO / GU-CGHPI</em></figcaption>
+        </figure>
+      </li>
+      <li class="one_half">
+        <blockquote>Nec nisi id odio ultricies fermentum integer dolor nisi bibendum a faucibus nec ultricies at arcu aliquam nec eros quis est placerat vehicula in hac habitasse platea dictumst aliquam erat volutpat.</blockquote>
+        <figure class="clear"><img class="circle" src="{% static 'images/messi.jpg' %}" alt="">
+          <figcaption>
+            <h6 class="heading"><span style="color:black;">Lionel Messi</h6>
+            <em><span style="color:black;">Director / Savannah Health system Innovation</em></figcaption>
+        </figure>
+      </li>
+    </ul>
+   
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+
+<div class="wrapper row2">
+  <section class="hoc container clear"> 
+    <!-- ################################################################################################ -->
+    <div class="center btmspace-80">
+      <h6 class="heading underline font-x2">Gallery</h6>
+    </div>
+    <ul class="nospace group">                                                          
+      <li class="one_quarter first">
+        <figure class="fixwidth"><a class="imgover btmspace-30" href="#"><img src="{% static 'images/gallery.png' %}" alt=""></a>
+          <figcaption class="bold uppercase center">Kubwa blood donation</figcaption>
+        </figure>
+      </li>
+      <li class="one_quarter">
+        <figure class="fixwidth"><a class="imgover btmspace-30" href="#"><img src="{% static 'images/gallery2.png' %}"alt=""></a>
+          <figcaption class="bold uppercase center">Kaduna donation</figcaption>
+        </figure>
+      </li>
+      <li class="one_quarter">
+        <figure class="fixwidth"><a class="imgover btmspace-30" href="#"><img src="{% static 'images/gallery4.png' %}" alt=""></a>
+          <figcaption class="bold uppercase center">red blood cell compatibility table</figcaption>
+        </figure>
+      </li>
+      <li class="one_quarter">
+        <figure class="fixwidth"><a class="imgover btmspace-30" href="#"><img src="{% static 'images/gallery3.png' %}"alt=""></a>
+          <figcaption class="bold uppercase center">kano blood drive team</figcaption>
+        </figure>
+      </li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+  <section class="hoc container clear"> 
+    <!-- ################################################################################################ -->
+    <div class="center btmspace-80">
+      <h6 class="heading underline font-x2">News Gallery</h6>
+    </div>
+    <ul id="latest" class="nospace group">
+      <li class="one_third first">
+        <article>
+          <figure><a class="imgover" href="#"><img src="{% static 'images/news.png' %}" alt=""></a></figure>
+          <div class="excerpt">
+            <h6 class="heading">covid19  antibody testing</h6>
+            <ul class="nospace meta">
+              <li><i class="fas fa-user rgtspace-5"></i> <a href="#">Admin</a></li>
+              <li><i class="far fa-clock rgtspace-5"></i>
+                <time datetime="2045-04-06T08:15+00:00">21 Mar 2021</time>
+              </li>
+            </ul>
+            <p>COVID19 pandemic has really affected the number of blood donations in the country  [<a href="#">&hellip;</a>]</p>
+            <footer><a class="btn" href="#">Read More</a></footer>
+          </div>
+        </article>
+      </li>
+      <li class="one_third">
+        <article>
+          <figure><a class="imgover" href="#"><img src="{% static 'images/news3.png' %}" alt=""></a></figure>
+          <div class="excerpt">
+            <h6 class="heading">health tips for first time donors</h6>
+            <ul class="nospace meta">
+              <li><i class="fas fa-user rgtspace-5"></i> <a href="#">Admin</a></li>
+              <li><i class="far fa-clock rgtspace-5"></i>
+                <time datetime="2045-04-05T08:15+00:00">22 Mar 2021</time>
+              </li>
+            </ul>
+            <p>Blood donation is so important, just as the health of healthy donors too.These tips [<a href="#">&hellip;</a>]</p>
+            <footer><a class="btn" href="#">Read More</a></footer>
+          </div>
+        </article>
+      </li>
+      
+      <li class="one_third">
+        <article>
+          <figure><a class="imgover" href="#"><img src="{% static 'images/news2.png' %}" alt=""></a></figure>
+          <div class="excerpt">
+            <h6 class="heading">New blood drive in Osun state</h6>
+            <ul class="nospace meta">
+              <li><i class="fas fa-user rgtspace-5"></i> <a href="#">Admin</a></li>
+              <li><i class="far fa-clock rgtspace-5"></i>
+                <time datetime="2045-04-04T08:15+00:00">23 Mar 2021</time>
+              </li>
+            </ul>
+            <p> In line with the plan of the NBTS to improve the blood donation process in Nigeria, Osun   [<a href="#">&hellip;</a>]</p>
+            <footer><a class="btn" href="#">Read More</a></footer>
+          </div>
+        </article>
+      </li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="heading">Reach Out to us</h6>
+      <ul class="nospace linklist contact btmspace-30">
+        <li><i class="fas fa-map-marker-alt"></i>
+          <address>
+            2,Babatope Ajakaye Cresent, Jahi , Abuja
+          </address>
+        </li>
+        <li><i class="fas fa-phone"></i> +234806766766666</li>
+        <li><i class="far fa-envelope"></i> info@savannahinnovations.com</li>
+      </ul>
+      <ul class="faico clear">
+        <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+        <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+        <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+        <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+       
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Latest News</h6>
+      <ul class="nospace linklist">
+        <li>
+          <article>
+            <p class="nospace btmspace-10"><a href="#">NBTS blood donation at Kubwa.</a></p>
+            <time class="block font-xs" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2045</time>
+          </article>
+        </li>
+        <li>
+          <article>
+            <p class="nospace btmspace-10"><a href="#">Advantages of blood donation</a></p>
+            <time class="block font-xs" datetime="2045-04-05">Thursday, 5<sup>th</sup> April 2045</time>
+          </article>
+        </li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Our Partners</h6>
+      <ul class="nospace linklist">
+        <li><a href="#">National Blood Transfusion Service</a></li>
+        <li><a href="#">GU-CGHPI</a></li>
+        
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Gallery</h6>
+      <ul class="nospace clear latestimg">
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}"alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img  src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+      </ul>
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <p class="fl_left">&copy; 2021 | <a href="https://savannahinnovations.com/">Savannah Health Systems Innovation Limited</a></p>
+    <p class="fl_right"> Designed by <a href="https://oluwatosin-dev.netlify.app/">Oluwatosin </a> </p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{% static 'scripts/jquery.min.js' %}"></script>
+<script src="{% static 'scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'scripts/jquery.mobilemenu.js' %}"></script>
+
+<script>
+    var myDate = new Date();
+    var hrs = myDate.getHours();
+   
+
+    var greet;
+
+    if (hrs < 12)
+        greet = 'Good Morning';
+    else if (hrs >= 12 && hrs <= 17)
+        greet = 'Good Afternoon';
+    else if (hrs >= 17 && hrs <= 24)
+        greet = 'Good Evening';
+
+    document.getElementById('greet').innerHTML =
+        '<b>' +  "<font color='black'>" + greet + '</b>  {{user.first_name}}';
+    
+</script>
+
+</body>
+</html>

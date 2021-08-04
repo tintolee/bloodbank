@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+{% load static %}
+<title>Hema Care</title>
+<meta charset="utf-8">
+<meta name="description" content="Blood bank management system">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+<link rel='stylesheet' href="{% static 'styles/layout.css'%}" type="text/css" media='all'>
+<link rel='stylesheet' href="{% static 'styles/framework.css'%}" type="text/css" media='all'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row0">
+  <div id="topbar" class="hoc clear">
+    <div class="fl_left"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+      
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+    <div class="fl_right"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+ 
+         
+        
+         {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" title="Logout">Log out <i class="far fa-life-ring"></i></a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}" title="Login">Log in <i class="fas fa-sign-in-alt"></i></a></li>
+        <li><a href="{% url 'signup' %}" title="Sign Up">Sign Up <i class="fas fa-edit"></i></a></li>
+        {% endif %}
+       
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row1">
+  <header id="header" class="hoc clear">
+    <div id="logo" class="fl_left"> 
+      <!-- ################################################################################################ -->
+   
+      <!-- ################################################################################################ -->
+       <h1><a href=" {% url 'home'%}" ><img src="{% static 'images/brand.png' %}"></a></h1>
+    </div>
+
+    <nav id="mainav" class="fl_right"> 
+      <!-- ################################################################################################ -->
+      <ul class="clear">
+      {% if user.is_authenticated %}
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'seek' %}">SEEK BLOOD</a></li>
+			    <li class="active"><a href="{% url 'donor' %}">DONATE</a></li>
+			    <li class="active"><a href="{% url 'eligibility' %}">ELIGIBILITY CRITERIA</a></li>
+				<li class="active"><a href=" {% url 'contact'%}">CONTACT US</a></li>
+				<li class="active"><a href=" {% url 'about_us'%}"> ABOUT US</a></li>
+       {% else %}
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'login' %}">SEEK BLOOD</a></li>
+			    <li class="active"><a href="{% url 'login' %}">DONATE</a></li>
+			    <li class="active"><a href="{% url 'eligibility' %}">ELIGIBILITY CRITERIA</a></li>
+				<li class="active"><a href=" {% url 'contact'%}">CONTACT US</a></li>
+				<li class="active"><a href=" {% url 'about_us'%}"> ABOUT US</a></li>
+        {% endif %}
+      </ul>
+      <!-- ################################################################################################ -->
+    </nav>
+  </header>
+</div>
+
+<form  method="POST" >
+  {% csrf_token %}
+  <div class="container">
+    {{ form.as_p}}
+ <button type="submit" class="registerbtn">Update</button>
+
+</div>
+
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

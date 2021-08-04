@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+
+<head>
+<title>Life Bankers</title>
+<meta charset="utf-8">
+<meta name="description" content="Blood bank management system">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel='stylesheet' href="{% static 'styles/layout.css'%}" type="text/css" media='all'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row0">
+  <div id="topbar" class="hoc clear">
+    <div class="fl_left"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+      
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+    <div class="fl_right"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+ 
+        <li><a href="{% url 'home' %}"> <span style="color:red;">Home <i class="fas fa-home"></i></a></li>
+        
+        <li><a href="{% url 'logout' %}" title="Logout"><span style="color:red;">Log out <i class="far fa-life-ring"></i></a></li>
+        
+       
+       
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row1">
+  <header id="header" class="hoc clear">
+    <div id="logo" class="fl_left"> 
+      <!-- ################################################################################################ -->
+   <h1><a href=" {% url 'home'%}" ><img src="{% static 'images/brand.png' %}"></a></h1>
+      <!-- ################################################################################################ -->
+    </div>
+
+    <nav id="mainav" class="fl_right"> 
+      <!-- ################################################################################################ -->
+      <ul class="clear">
+      {% if user.is_authenticated %}
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'seek' %}">SEEK BLOOD</a></li>
+			    <li class="active"><a href="{% url 'donor' %}">DONATE</a></li>
+			    <li class="active"><a href="{% url 'eligibility' %}">ELIGIBILITY CRITERIA</a></li>
+				<li class="active"><a href=" {% url 'contact'%}">CONTACT US</a></li>
+				<li class="active"><a href=" {% url 'about_us'%}"> ABOUT US</a></li>
+       {% else %}
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'login' %}">SEEK BLOOD</a></li>
+			    <li class="active"><a href="{% url 'login' %}">DONATE</a></li>
+			    <li class="active"><a href="{% url 'eligibility' %}">ELIGIBILITY CRITERIA</a></li>
+				<li class="active"><a href=" {% url 'contact'%}">CONTACT US</a></li>
+				<li class="active"><a href=" {% url 'about_us'%}"> ABOUT US</a></li>
+        {% endif %}
+      </ul>
+      
+      <!-- ################################################################################################ -->
+    </nav>
+  </header>
+</div>
+<div class='row justify-content-center'>
+ <div class='col-5'>
+ <div class='card'>
+ <div class='card-body'>
+<form method="POST" id="seek">
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+  {% csrf_token %}
+  <div class="container">
+    <h1><center>Request Blood</center></h1><br>
+    <p>Please fill in this form to generate a request.</p>
+    <hr>
+
+    <label for="attendantname"><b>Attendant's name</b></label>
+    <input type="text" placeholder="Enter Attendant's name" class='form-control' name="attendantname" required><br>
+
+    <label for="Contact Number"><b>Contact Number</label>
+    <input type="number" placeholder="Enter you contact number"  class='form-control'name="contactnumber" maxlength="10" required>
+    <br><br>
+   
+    <label for="patientname"><b>Patient's name</b></label>
+    <input type="text" placeholder="Enter Patient's name"  class='form-control' name="patientname" required><br>
+
+      <label for="Gender"><b>Gender</b></label>
+ <input type="radio" name="gender" value="male"> Male
+ <input type="radio" name="gender" value="female"> Female
+ <br>
+<br>
+ <label for="age"><b>Age</b></label>
+ <input type="text" placeholder="Enter Age" class='form-control' name="age" required>
+
+ <br>
+
+<label for="bloodgroup"><b>Blood Group</label><br><br>
+<select name="bloodgroup" form="seek" class='form-control'>
+  <option value="O Positive">O+</option>
+  <option value="O Negative">O-</option>
+  <option value="A Positive">A+</option>
+  <option value="A Negative">A-</option>
+  <option value="B Positive">B+</option>
+  <option value="B Negative">B-</option>
+  <option value="AB Positive">AB+</option>
+  <option value="AB Negative">AB-</option>
+  <br>
+</select><br><br>
+
+<label for="quantity"><b>Quantity (in pints)</label>
+<input type="number" placeholder="Blood Quantity" name="quantity" class='form-control'maxlength="10" required>
+<br>
+
+<label for="hospital"><b>Hospital Name</label>
+<input type="text" placeholder="Hospital Name" name="hospital" class='form-control' required><br>
+
+<label for="date"><b>Deadline</label><br>
+<input type="date" name="date" class='form-control' required style="font-family: Arial, Helvetica, sans-serif; background-color:#f1f1f1;"
+width="100%" height="50px"><br>
+
+    <button type="submit" class="btn">Request</button>
+  </div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<div class="wrapper row4">
+  <footer id="footer" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="heading">Reach Out to us</h6>
+      <ul class="nospace linklist contact btmspace-30">
+        <li><i class="fas fa-map-marker-alt"></i>
+          <address>
+            2,Babatope Ajakaye Cresent, Jahi , Abuja
+          </address>
+        </li>
+        <li><i class="fas fa-phone"></i> +234806766766666</li>
+        <li><i class="far fa-envelope"></i> info@savannahinnovations.com</li>
+      </ul>
+      <ul class="faico clear">
+        <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+        <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+        <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+        <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a class="faicon-vk" href="#"><i class="fab fa-vk"></i></a></li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Latest News</h6>
+      <ul class="nospace linklist">
+        <li>
+          <article>
+            <p class="nospace btmspace-10"><a href="#"> <span style="color:red;">NBTS blood donation at Kubwa.</a></p>
+            <time class="block font-xs" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2045</time>
+          </article>
+        </li>
+        <li>
+          <article>
+            <p class="nospace btmspace-10"><a href="#"><span style="color:red;">Advantages of blood donation</a></p>
+            <time class="block font-xs" datetime="2045-04-05">Thursday, 5<sup>th</sup> April 2045</time>
+          </article>
+        </li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Non lobortis felis lacus</h6>
+      <ul class="nospace linklist">
+        <li><a href="#"><span style="color:red;">Morbi tristique senectus</a></li>
+        <li><a href="#"><span style="color:red;">Habitasse platea dictumst</a></li>
+        <li><a href="#"><span style="color:red;">Egestas in hac habitasse</a></li>
+        <li><a href="#"><span style="color:red;">Tellus ac convallis pellentesque</a></li>
+        <li><a href="#"><span style="color:red;">Lacus tortor varius erat</a></li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Gallery</h6>
+      <ul class="nospace clear latestimg">
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.png' %}"alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.png' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img  src="{% static 'images/100x100.png' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.png' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.png' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.png' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.png' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.png' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.png' %}" alt=""></a></li>
+      </ul>
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <p class="fl_left">&copy; 2021 | <a href="https://savannahinnovations.com/">Savannah Health System Innovation </a></p>
+    <p class="fl_right"> Designed by <a href="https://oluwatosin-dev.netlify.app/">Oluwatosin </a> </p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{% static 'scripts/jquery.min.js' %}"></script>
+<script src="{% static 'scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'scripts/jquery.mobilemenu.js' %}"></script>
+
+
+</body>
+</html>

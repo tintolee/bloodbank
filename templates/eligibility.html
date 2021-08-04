@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+
+<head>
+<title>Hema Care</title>
+<meta charset="utf-8">
+<meta name="description" content="Blood bank management system">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel='stylesheet' href="{% static 'styles/layout.css'%}" type="text/css" media='all'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+<style>
+.tee{
+    margin: 5em;
+}
+
+</style>
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row0">
+  <div id="topbar" class="hoc clear">
+    <div class="fl_left"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+      
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+    <div class="fl_right"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+
+
+        
+         {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" title="Logout"> <span style="color:red;">Log out <i class="far fa-life-ring"></i></a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}" title="Login"><span style="color:red;">Log in <i class="fas fa-sign-in-alt"></i></a></li>
+        <li><a href="{% url 'signup' %}" title="Sign Up"><span style="color:red;">Sign Up <i class="fas fa-edit"></i></a></li>
+        {% endif %}
+       
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row1">
+  <header id="header" class="hoc clear">
+    <div id="logo" class="fl_left"> 
+      <!-- ################################################################################################ -->
+   <h1><a href=" {% url 'home'%}" ><img src="{% static 'images/brand.png' %}"></a></h1>
+      <!-- ################################################################################################ -->
+    </div>
+
+    <nav id="mainav" class="fl_right"> 
+      <!-- ################################################################################################ -->
+      <ul class="clear">
+      {% if user.is_authenticated %}
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'seek' %}">SEEK BLOOD</a></li>
+			    <li class="active"><a href="{% url 'donor' %}">DONATE</a></li>
+			    <li class="active"><a href="{% url 'eligibility' %}">ELIGIBILITY CRITERIA</a></li>
+				<li class="active"><a href=" {% url 'contact'%}">CONTACT US</a></li>
+				<li class="active"><a href=" {% url 'about_us'%}"> ABOUT US</a></li>
+       {% else %}
+        <li class="active"><a href="{% url 'home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'login' %}">SEEK BLOOD</a></li>
+			    <li class="active"><a href="{% url 'login' %}">DONATE</a></li>
+			    <li class="active"><a href="{% url 'eligibility' %}">ELIGIBILITY CRITERIA</a></li>
+				<li class="active"><a href=" {% url 'contact'%}">CONTACT US</a></li>
+				<li class="active"><a href=" {% url 'about_us'%}"> ABOUT US</a></li>
+        {% endif %}
+      </ul>
+      <!-- ################################################################################################ -->
+    </nav>
+  </header>
+</div><br>
+    <div class="tee">
+    <h1 class="main"><center>GENERAL BLOOD AND PLATELET DONOR GUIDELINES</center></h1>
+    <hr>
+    <link rel='stylesheet' href="{% static 'css/font.css' %}">
+    <h2>Why guidelines are important?</h2>
+    <p class="para">Donor eligibility rules help to protect the health and safety of the donor
+      as well as the person who will receive a blood transfusion. The general
+       guidelines listed below will help you determine if you are eligible to
+       donate blood or platelets.</p>
+    <h2>General Guidelines</h2>
+    <p class="para">There are several parameters that determine the eligibility of an individual to donate blood. Guidelines laid down by the Ministry of Health,have to be followed by blood banks and organizations conducting blood donation camps.</p>
+    <ol class="para">
+      <li><strong>Age and weight</strong>- The donor must be 18–65 years old and should weigh a minimum of 50 kg.</li>
+      <li><strong>Pulse rate</strong>- Between 50 and 100 without irregularities.</li>
+      <li><strong>Hemoglobin level</strong>- A minimum of 12.5 g/dL.</li>
+      <li><strong>Blood pressure</strong>-<em>Diastolic</em>: 50–100 mm Hg,<em> Systolic</em>: 100–180 mm Hg.</li>
+      <li><strong>Body temperature</strong>- Should be normal, with an oral temperature not exceeding 37.5 °C.</li>
+      <li>The time period between successive blood donations should be more than 3 months.</li>
+      <li><strong>Overall health</strong>- The donor must be in good health, and should not be suffering from any transmittable diseases.</li>
+    </ol>
+
+    <h2>What is 'Good Health'?</h2>
+    <p class="para">Good health means that you feel well and are able to carry out normal daily activities. If you have a chronic medical condition such as diabetes or high blood pressure, you may still be eligible as long as you are receiving treatment to control your condition.</p>
+    <h2>What Conditions Would Make You Ineligible to be a Donor?
+    </h2>
+    <p class="para">You will not be eligible to donate blood or platelets if :</p>
+    <ol class="para">
+      <li>You have tested positive for hepatitis B or hepatitis C, lived with or had sexual contact in the past 12 months with anyone who has hepatitis B or symptomatic hepatitis C.</li>
+      <li>You had a tattoo in the past 12 months or received a blood transfusion (except with your own blood) in the past 12 months.</li>
+      <li>You have have ever had a positive test for the AIDS virus.</li>
+      <li>You have ever used intravenous illegal drugs, even once.</li>
+      <li>You have ever used injectable drugs, including anabolic steroids, unless prescribed by a physician.</li>
+      <li>You have traveled in the past year, or lived in the past three years, in an area where malaria is endemic.</li>
+      <li>It is not necessarily surgery but the underlying condition that precipitated the surgery that requires evaluation before donation. Evaluation is on a case by case basis. You should discuss your particular situation with the health historian at the time of donation.</li>
+      <li>Persons who are pregnant are not eligible to donate. Wait 6 weeks after giving birth.</li>
+      <li>Wait 12 months if a piercing was performed using a reusable gun or any reusable instrument.
+Wait 12 months if there is any question whether or not the instruments used were single-use equipment.</li>
+      <li>A donor with an acute infection should not donate. The reason for antibiotic use must be evaluated to determine if the donor has a bacterial infection that could be transmissible by blood.Acceptable after finishing oral antibiotics for an infection (bacterial or viral). May have taken last pill on the date of donation. Antibiotic by injection for an infection acceptable 10 days after last injection. </li>
+
+    </ol>
+    <hr>
+    <h3>NOTE</h3>
+    <p class="para">Blood donors must wait at least 3 months between blood donations and 7 days before donating platelets. Platelet donors may donate once every seven days, not to exceed six times in any eight-week period, and must wait 7 days before donating blood.</p>
+    <div class="signback">
+     {% if user.is_authenticated %}
+      <p class="active">click <a href="{% url 'donor' %}"><span style="color:red;">here</a> to donate</p>
+      {% else %}
+    <p>Already have an account? <a href="{% url 'login' %}"> <span style="color:red;">Sign in</a>.</p>
+       <p>New user? <a href="{% url 'signup' %}"> <span style="color:red;">Sign up</a></p>
+       {% endif %}
+    </div>
+
+</div>
+
+		<div class="wrapper row4">
+  <footer id="footer" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <div class="one_quarter first">
+      <h6 class="heading">Reach Out to us</h6>
+      <ul class="nospace linklist contact btmspace-30">
+        <li><i class="fas fa-map-marker-alt"></i>
+          <address>
+            2,Babatope Ajakaye Cresent, Jahi , Abuja
+          </address>
+        </li>
+        <li><i class="fas fa-phone"></i> +234806766766666</li>
+        <li><i class="far fa-envelope"></i> info@savannahinnovations.com</li>
+      </ul>
+      <ul class="faico clear">
+        <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+        <li><a class="faicon-google-plus" href="#"><i class="fab fa-google-plus-g"></i></a></li>
+        <li><a class="faicon-linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+        <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a class="faicon-vk" href="#"><i class="fab fa-vk"></i></a></li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Latest News</h6>
+      <ul class="nospace linklist">
+        <li>
+          <article>
+            <p class="nospace btmspace-10"><a href="#"><span style="color:red;">NBTS blood donation at Kubwa.</a></p>
+            <time class="block font-xs" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2045</time>
+          </article>
+        </li>
+        <li>
+          <article>
+            <p class="nospace btmspace-10"><a href="#"><span style="color:red;">Advantages of blood donation</a></p>
+            <time class="block font-xs" datetime="2045-04-05">Thursday, 5<sup>th</sup> April 2045</time>
+          </article>
+        </li>
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Our Partners</h6>
+      <ul class="nospace linklist">
+        <li><a href="#"><span style="color:red;">National Blood Transfusion Service</a></li>
+        <li><a href="#"><span style="color:red;">GU-CGHPI</a></li>
+        
+      </ul>
+    </div>
+    <div class="one_quarter">
+      <h6 class="heading">Gallery</h6>
+      <ul class="nospace clear latestimg">
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}"alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img  src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+        <li><a class="imgover" href="#"><img src="{% static 'images/100x100.jpg' %}" alt=""></a></li>
+      </ul>
+    </div>
+    <!-- ################################################################################################ -->
+  </footer>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <p class="fl_left">&copy; 2021 | <a href="https://savannahinnovations.com/">Savannah Health System Innovation </a></p>
+    <p class="fl_right"> Designed by <a href="https://oluwatosin-dev.netlify.app/">Oluwatosin </a> </p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{% static 'scripts/jquery.min.js' %}"></script>
+<script src="{% static 'scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'scripts/jquery.mobilemenu.js' %}"></script>
+
+</body>
+</html>
